@@ -1,0 +1,622 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>肌力活動問卷調查</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 30px 16px;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      background: #f1f6f3;
+      color: #34443b;
+      font-size: 17px;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: auto;
+      background: white;
+      padding: 35px;
+      border-radius: 18px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.06);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .icon {
+      font-size: 45px;
+    }
+
+    h1 {
+      color: #32785c;
+      font-size: 30px;
+      margin: 10px 0;
+    }
+
+    .subtitle {
+      color: #7b8a80;
+      line-height: 1.8;
+    }
+
+    .section {
+      margin-top: 30px;
+      padding: 22px;
+      background: #f8faf8;
+      border-radius: 12px;
+    }
+
+    .section-title {
+      font-size: 21px;
+      font-weight: bold;
+      color: #32785c;
+      border-left: 5px solid #64a986;
+      padding-left: 12px;
+      margin-bottom: 22px;
+    }
+
+    .question {
+      margin-bottom: 23px;
+    }
+
+    label.title-label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ccd8cf;
+      border-radius: 9px;
+      font-size: 17px;
+      background: white;
+      color: #34443b;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 2px solid #64a986;
+      border-color: #64a986;
+    }
+
+    .options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 12px 15px;
+      background: white;
+      border: 1px solid #dce6df;
+      border-radius: 9px;
+      cursor: pointer;
+      min-height: 48px;
+    }
+
+    .option:hover {
+      background: #edf6ef;
+    }
+
+    input[type="radio"] {
+      width: 19px;
+      height: 19px;
+      accent-color: #438d69;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .required {
+      color: #d65a5a;
+      margin-left: 4px;
+    }
+
+    .hint {
+      color: #7b8a80;
+      font-size: 14px;
+      margin-top: 7px;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 10px;
+      font-size: 19px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    .submit-btn {
+      background: #438d69;
+      color: white;
+    }
+
+    .submit-btn:hover {
+      background: #327451;
+    }
+
+    .export-btn {
+      background: #e8f2eb;
+      color: #32785c;
+      border: 1px solid #b9d5c3;
+    }
+
+    .export-btn:hover {
+      background: #dcece1;
+    }
+
+    .message {
+      display: none;
+      margin-top: 20px;
+      padding: 18px;
+      background: #e5f5e9;
+      color: #287346;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: bold;
+      line-height: 1.7;
+    }
+
+    .admin-area {
+      margin-top: 35px;
+      padding-top: 20px;
+      border-top: 1px dashed #ccd8cf;
+    }
+
+    .admin-area p {
+      font-size: 14px;
+      color: #78877e;
+      line-height: 1.7;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      color: #9aa79e;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+
+      .section {
+        padding: 17px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="icon">💪🎲</div>
+    <h1>肌力活動問卷調查</h1>
+    <p class="subtitle">
+      感謝您參與本次活動！<br>
+      請依照實際情況填寫以下問題，謝謝您的協助。
+    </p>
+  </header>
+
+  <form id="surveyForm">
+
+    <!-- 第一部分：基本資料 -->
+    <div class="section">
+      <div class="section-title">一、基本資料</div>
+
+      <div class="question">
+        <label class="title-label">
+          1. 性別 <span class="required">*</span>
+        </label>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="gender" value="男性" required>
+            男性
+          </label>
+          <label class="option">
+            <input type="radio" name="gender" value="女性">
+            女性
+          </label>
+          <label class="option">
+            <input type="radio" name="gender" value="其他／不透露">
+            其他／不透露
+          </label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="title-label" for="age">
+          2. 年齡 <span class="required">*</span>
+        </label>
+        <input
+          type="number"
+          id="age"
+          name="age"
+          min="1"
+          max="120"
+          placeholder="請輸入您的年齡"
+          required
+        >
+      </div>
+
+      <div class="question">
+        <label class="title-label" for="date">
+          3. 訪談日期 <span class="required">*</span>
+        </label>
+        <input type="date" id="date" name="date" required>
+      </div>
+
+      <div class="question">
+        <label class="title-label" for="location">
+          4. 活動地點 <span class="required">*</span>
+        </label>
+        <input
+          type="text"
+          id="location"
+          name="location"
+          placeholder="例如：活動中心、社區關懷據點"
+          required
+        >
+      </div>
+    </div>
+
+    <!-- 第二部分：執行活動 -->
+    <div class="section">
+      <div class="section-title">二、執行活動</div>
+
+      <div class="question">
+        <label class="title-label">
+          5. 本次參與的活動 <span class="required">*</span>
+        </label>
+
+        <div class="options">
+          <label class="option">
+            <input
+              type="radio"
+              name="activity"
+              value="肌力大富翁"
+              required
+            >
+            🎲 肌力大富翁
+          </label>
+
+          <label class="option">
+            <input
+              type="radio"
+              name="activity"
+              value="魔鏡上下肢"
+            >
+            🪞 魔鏡上下肢
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- 第三部分：活動回饋 -->
+    <div class="section">
+      <div class="section-title">三、活動回饋</div>
+
+      <div class="question">
+        <label class="title-label">
+          6. 您是否了解活動的玩法與規則？
+          <span class="required">*</span>
+        </label>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="understand" value="非常了解" required>
+            非常了解
+          </label>
+          <label class="option">
+            <input type="radio" name="understand" value="大致了解">
+            大致了解
+          </label>
+          <label class="option">
+            <input type="radio" name="understand" value="不太了解">
+            不太了解
+          </label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="title-label">
+          7. 您覺得本次活動的難易程度？
+          <span class="required">*</span>
+        </label>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="difficulty" value="太簡單" required>
+            太簡單
+          </label>
+          <label class="option">
+            <input type="radio" name="difficulty" value="剛剛好">
+            剛剛好
+          </label>
+          <label class="option">
+            <input type="radio" name="difficulty" value="有點困難">
+            有點困難
+          </label>
+          <label class="option">
+            <input type="radio" name="difficulty" value="非常困難">
+            非常困難
+          </label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="title-label">
+          8. 您喜歡這次的活動嗎？
+          <span class="required">*</span>
+        </label>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="like" value="非常喜歡" required>
+            非常喜歡
+          </label>
+          <label class="option">
+            <input type="radio" name="like" value="喜歡">
+            喜歡
+          </label>
+          <label class="option">
+            <input type="radio" name="like" value="普通">
+            普通
+          </label>
+          <label class="option">
+            <input type="radio" name="like" value="不喜歡">
+            不喜歡
+          </label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="title-label">
+          9. 您願意再次參加類似的活動嗎？
+          <span class="required">*</span>
+        </label>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="again" value="願意" required>
+            願意
+          </label>
+          <label class="option">
+            <input type="radio" name="again" value="不確定">
+            不確定
+          </label>
+          <label class="option">
+            <input type="radio" name="again" value="不願意">
+            不願意
+          </label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="title-label" for="suggestion">
+          10. 您對本次活動有什麼建議或想法嗎？
+        </label>
+        <textarea
+          id="suggestion"
+          name="suggestion"
+          placeholder="歡迎留下您的想法或建議（選填）"
+        ></textarea>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-btn">
+      ✓ 送出問卷
+    </button>
+
+    <div class="message" id="successMessage">
+      🎉 問卷填寫成功！<br>
+      感謝您撥空參與本次活動。
+    </div>
+
+  </form>
+
+  <!-- 資料管理 -->
+  <div class="admin-area">
+    <div class="section-title">📊 問卷資料管理</div>
+
+    <p>
+      已在這台裝置儲存的問卷數量：
+      <strong id="recordCount">0</strong> 份
+    </p>
+
+    <button class="export-btn" type="button" onclick="exportCSV()">
+      ⬇ 匯出所有問卷資料（CSV）
+    </button>
+
+    <p>
+      注意：資料目前儲存在填寫者使用的瀏覽器中。
+      不同裝置之間不會自動同步，請定期匯出備份。
+    </p>
+  </div>
+
+  <footer>
+    肌力活動問卷調查 ｜ 感謝您的參與 ❤️
+  </footer>
+
+</div>
+
+<script>
+  const STORAGE_KEY = "muscleSurveyRecords";
+
+  // 取得目前已儲存的資料
+  function getRecords() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    } catch (error) {
+      return [];
+    }
+  }
+
+  // 更新資料筆數
+  function updateCount() {
+    document.getElementById("recordCount").textContent =
+      getRecords().length;
+  }
+
+  // 取得單選題答案
+  function getRadioValue(name) {
+    const selected = document.querySelector(
+      `input[name="${name}"]:checked`
+    );
+    return selected ? selected.value : "";
+  }
+
+  // 送出問卷
+  document.getElementById("surveyForm").addEventListener(
+    "submit",
+    function(event) {
+      event.preventDefault();
+
+      if (!this.reportValidity()) return;
+
+      const record = {
+        gender: getRadioValue("gender"),
+        age: document.getElementById("age").value,
+        date: document.getElementById("date").value,
+        location: document.getElementById("location").value.trim(),
+        activity: getRadioValue("activity"),
+        understand: getRadioValue("understand"),
+        difficulty: getRadioValue("difficulty"),
+        like: getRadioValue("like"),
+        again: getRadioValue("again"),
+        suggestion: document.getElementById("suggestion").value.trim(),
+        submittedAt: new Date().toLocaleString("zh-TW")
+      };
+
+      const records = getRecords();
+      records.push(record);
+
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+      } catch (error) {
+        alert("儲存失敗，可能是瀏覽器儲存空間不足。");
+        return;
+      }
+
+      updateCount();
+
+      document.getElementById("successMessage").style.display = "block";
+
+      this.reset();
+
+      document.getElementById("successMessage").scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }
+  );
+
+  // CSV 欄位處理，避免特殊字元破壞格式
+  function csvCell(value) {
+    let text = String(value ?? "");
+
+    // 避免試算表將文字當成公式執行
+    if (/^[\s]*[=+\-@]/.test(text)) {
+      text = "'" + text;
+    }
+
+    return '"' + text.replace(/"/g, '""') + '"';
+  }
+
+  // 匯出 CSV
+  function exportCSV() {
+    const records = getRecords();
+
+    if (records.length === 0) {
+      alert("目前還沒有問卷資料！");
+      return;
+    }
+
+    const headers = [
+      "性別",
+      "年齡",
+      "訪談日期",
+      "活動地點",
+      "執行活動",
+      "是否了解規則",
+      "活動難易程度",
+      "是否喜歡活動",
+      "是否願意再次參加",
+      "活動建議",
+      "填寫時間"
+    ];
+
+    const keys = [
+      "gender",
+      "age",
+      "date",
+      "location",
+      "activity",
+      "understand",
+      "difficulty",
+      "like",
+      "again",
+      "suggestion",
+      "submittedAt"
+    ];
+
+    const rows = records.map(record =>
+      keys.map(key => csvCell(record[key])).join(",")
+    );
+
+    const csv = "\uFEFF" +
+      headers.map(csvCell).join(",") +
+      "\r\n" +
+      rows.join("\r\n");
+
+    const blob = new Blob([csv], {
+      type: "text/csv;charset=utf-8;"
+    });
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = "肌力活動問卷資料.csv";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    URL.revokeObjectURL(url);
+  }
+
+  // 網頁開啟時更新資料筆數
+  updateCount();
+</script>
+
+</body>
+</html>
