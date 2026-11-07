@@ -1,9 +1,10 @@
 
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>肌力活動問卷調查</title>
 
 <style>
@@ -13,183 +14,120 @@
 
 body {
   margin: 0;
-  padding: 30px 16px;
-  font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-  background: #f1f6f3;
-  color: #34443b;
-  font-size: 17px;
+  padding: 25px 15px;
+  background: #f1f5f3;
+  font-family: "Microsoft JhengHei", sans-serif;
+  color: #333;
 }
 
 .container {
-  max-width: 720px;
+  max-width: 550px;
   margin: auto;
   background: white;
-  padding: 35px;
+  padding: 28px;
   border-radius: 18px;
-  box-shadow: 0 5px 25px rgba(0,0,0,0.06);
-}
-
-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.icon {
-  font-size: 45px;
+  box-shadow: 0 5px 20px rgba(0,0,0,.06);
 }
 
 h1 {
-  color: #32785c;
-  font-size: 30px;
-  margin: 10px 0;
+  text-align: center;
+  color: #268b73;
+  font-size: 25px;
 }
 
 .subtitle {
-  color: #7b8a80;
-  line-height: 1.8;
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 28px;
 }
 
 .section {
-  margin-top: 30px;
-  padding: 22px;
-  background: #f8faf8;
-  border-radius: 12px;
+  margin-top: 25px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
 }
 
-.section-title {
-  font-size: 21px;
-  font-weight: bold;
-  color: #32785c;
-  border-left: 5px solid #64a986;
-  padding-left: 12px;
-  margin-bottom: 22px;
+.section h3 {
+  color: #268b73;
+  font-size: 17px;
 }
 
-.question {
-  margin-bottom: 23px;
-}
-
-.title-label {
+label {
   display: block;
+  margin: 17px 0 8px;
   font-weight: bold;
-  margin-bottom: 10px;
-  font-size: 18px;
+  font-size: 14px;
 }
 
-input[type="text"],
-input[type="number"],
-input[type="date"],
-textarea {
+input, select, textarea {
   width: 100%;
   padding: 13px;
-  border: 1px solid #ccd8cf;
+  border: 1px solid #ddd;
   border-radius: 9px;
-  font-size: 17px;
+  font-size: 15px;
   background: white;
-  color: #34443b;
-}
-
-input:focus,
-textarea:focus {
-  outline: 2px solid #64a986;
-  border-color: #64a986;
-}
-
-.options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.option {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 12px 15px;
-  background: white;
-  border: 1px solid #dce6df;
-  border-radius: 9px;
-  cursor: pointer;
-  min-height: 48px;
-}
-
-.option:hover {
-  background: #edf6ef;
-}
-
-input[type="radio"] {
-  width: 19px;
-  height: 19px;
-  accent-color: #438d69;
 }
 
 textarea {
   resize: vertical;
-  min-height: 100px;
+  min-height: 85px;
 }
 
-.required {
-  color: #d65a5a;
-  margin-left: 4px;
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 13px;
+  border: 1px solid #ddd;
+  border-radius: 9px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: normal;
+  margin: 0;
+}
+
+.radio-option input {
+  width: auto;
+  margin: 0;
+  accent-color: #268b73;
 }
 
 button {
   width: 100%;
   padding: 16px;
+  margin-top: 28px;
   border: none;
   border-radius: 10px;
-  font-size: 19px;
+  background: #268b73;
+  color: white;
+  font-size: 17px;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 15px;
 }
 
-.submit-btn {
-  background: #438d69;
-  color: white;
+button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
 }
 
-.submit-btn:hover {
-  background: #327451;
-}
-
-.submit-btn:disabled {
-  background: #9bb8a5;
-  cursor: wait;
-}
-
-.message {
-  display: none;
-  margin-top: 20px;
-  padding: 18px;
-  background: #e5f5e9;
-  color: #287346;
-  border-radius: 10px;
+#message {
+  margin-top: 18px;
   text-align: center;
-  font-weight: bold;
   line-height: 1.7;
-}
-
-footer {
-  text-align: center;
-  margin-top: 30px;
-  color: #9aa79e;
   font-size: 14px;
 }
 
-@media (max-width: 600px) {
-  .container {
-    padding: 20px;
-  }
-
-  h1 {
-    font-size: 25px;
-  }
-
-  .section {
-    padding: 17px;
-  }
+.required {
+  color: #e45b5b;
 }
+
 </style>
 </head>
 
@@ -197,348 +135,177 @@ footer {
 
 <div class="container">
 
-<header>
-  <div class="icon">💪🎲</div>
-  <h1>肌力活動問卷調查</h1>
-  <p class="subtitle">
-    感謝您參與本次活動！<br>
-    請依照實際情況填寫以下問題，謝謝您的協助。
-  </p>
-</header>
+<h1>肌力活動問卷調查</h1>
+
+<div class="subtitle">
+感謝您參與本次活動，請依照實際體驗填寫。
+</div>
 
 <form id="surveyForm">
 
-<!-- 一、基本資料 -->
 <div class="section">
+<h3>一、基本資料</h3>
 
-<div class="section-title">一、基本資料</div>
-
-<div class="question">
-<label class="title-label">
-1. 性別 <span class="required">*</span>
+<label>1. 性別 <span class="required">*</span></label>
+<div class="radio-group">
+<label class="radio-option">
+<input type="radio" name="gender" value="男" required> 男
 </label>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="gender" value="男性" required>
-男性
+<label class="radio-option">
+<input type="radio" name="gender" value="女"> 女
 </label>
-
-<label class="option">
-<input type="radio" name="gender" value="女性">
-女性
-</label>
-
-<label class="option">
-<input type="radio" name="gender" value="其他／不透露">
-其他／不透露
+<label class="radio-option">
+<input type="radio" name="gender" value="其他／不方便透露"> 其他／不方便透露
 </label>
 </div>
-</div>
 
-<div class="question">
-<label class="title-label" for="age">
-2. 年齡 <span class="required">*</span>
-</label>
+<label>2. 年齡 <span class="required">*</span></label>
+<input type="number" name="age" min="1" max="120"
+placeholder="請輸入您的年齡" required>
 
-<input
-type="number"
-id="age"
-name="age"
-min="1"
-max="120"
-placeholder="請輸入您的年齡"
-required
->
-</div>
+<label>3. 訪談日期 <span class="required">*</span></label>
+<input type="date" name="interviewDate" required>
 
-<div class="question">
-<label class="title-label" for="date">
-3. 訪談日期 <span class="required">*</span>
-</label>
-
-<input
-type="date"
-id="date"
-name="date"
-required
->
-</div>
-
-<div class="question">
-<label class="title-label" for="location">
-4. 活動地點 <span class="required">*</span>
-</label>
-
-<input
-type="text"
-id="location"
-name="location"
-placeholder="例如：活動中心、社區關懷據點"
-required
->
-</div>
+<label>4. 活動地點 <span class="required">*</span></label>
+<input type="text" name="location"
+placeholder="例如：活動中心、社區據點" required>
 
 </div>
 
-<!-- 二、執行活動 -->
 <div class="section">
+<h3>二、執行活動</h3>
 
-<div class="section-title">二、執行活動</div>
+<label>5. 請選擇今天參與的活動 <span class="required">*</span></label>
 
-<div class="question">
-<label class="title-label">
-5. 本次參與的活動 <span class="required">*</span>
+<div class="radio-group">
+
+<label class="radio-option">
+<input type="radio" name="activity"
+value="肌力大富翁" required>
+肌力大富翁
 </label>
 
-<div class="options">
-
-<label class="option">
-<input
-type="radio"
-name="activity"
-value="肌力大富翁"
-required
->
-🎲 肌力大富翁
-</label>
-
-<label class="option">
-<input
-type="radio"
-name="activity"
-value="魔鏡上下肢"
->
-🪞 魔鏡上下肢
+<label class="radio-option">
+<input type="radio" name="activity"
+value="魔鏡上下肢">
+魔鏡上下肢
 </label>
 
 </div>
 </div>
 
-</div>
-
-<!-- 三、活動回饋 -->
 <div class="section">
+<h3>三、活動回饋</h3>
 
-<div class="section-title">三、活動回饋</div>
+<label>6. 您是否了解今天的活動規則？ <span class="required">*</span></label>
+<select name="understand" required>
+<option value="">請選擇</option>
+<option>非常了解</option>
+<option>了解</option>
+<option>普通</option>
+<option>不太了解</option>
+<option>完全不了解</option>
+</select>
 
-<div class="question">
-<label class="title-label">
-6. 您是否了解活動的玩法與規則？
-<span class="required">*</span>
-</label>
+<label>7. 您覺得今天的活動難易程度如何？ <span class="required">*</span></label>
+<select name="difficulty" required>
+<option value="">請選擇</option>
+<option>非常簡單</option>
+<option>簡單</option>
+<option>適中</option>
+<option>困難</option>
+<option>非常困難</option>
+</select>
 
-<div class="options">
+<label>8. 您喜歡今天的活動嗎？ <span class="required">*</span></label>
+<select name="like" required>
+<option value="">請選擇</option>
+<option>非常喜歡</option>
+<option>喜歡</option>
+<option>普通</option>
+<option>不喜歡</option>
+<option>非常不喜歡</option>
+</select>
 
-<label class="option">
-<input type="radio" name="understand" value="非常了解" required>
-非常了解
-</label>
+<label>9. 您願意再次參加類似活動嗎？ <span class="required">*</span></label>
+<select name="joinAgain" required>
+<option value="">請選擇</option>
+<option>非常願意</option>
+<option>願意</option>
+<option>不確定</option>
+<option>不願意</option>
+</select>
 
-<label class="option">
-<input type="radio" name="understand" value="大致了解">
-大致了解
-</label>
-
-<label class="option">
-<input type="radio" name="understand" value="不太了解">
-不太了解
-</label>
-
-</div>
-</div>
-
-<div class="question">
-<label class="title-label">
-7. 您覺得本次活動的難易程度？
-<span class="required">*</span>
-</label>
-
-<div class="options">
-
-<label class="option">
-<input type="radio" name="difficulty" value="太簡單" required>
-太簡單
-</label>
-
-<label class="option">
-<input type="radio" name="difficulty" value="剛剛好">
-剛剛好
-</label>
-
-<label class="option">
-<input type="radio" name="difficulty" value="有點困難">
-有點困難
-</label>
-
-<label class="option">
-<input type="radio" name="difficulty" value="非常困難">
-非常困難
-</label>
-
-</div>
-</div>
-
-<div class="question">
-<label class="title-label">
-8. 您喜歡這次的活動嗎？
-<span class="required">*</span>
-</label>
-
-<div class="options">
-
-<label class="option">
-<input type="radio" name="like" value="非常喜歡" required>
-非常喜歡
-</label>
-
-<label class="option">
-<input type="radio" name="like" value="喜歡">
-喜歡
-</label>
-
-<label class="option">
-<input type="radio" name="like" value="普通">
-普通
-</label>
-
-<label class="option">
-<input type="radio" name="like" value="不喜歡">
-不喜歡
-</label>
-
-</div>
-</div>
-
-<div class="question">
-<label class="title-label">
-9. 您願意再次參加類似的活動嗎？
-<span class="required">*</span>
-</label>
-
-<div class="options">
-
-<label class="option">
-<input type="radio" name="again" value="願意" required>
-願意
-</label>
-
-<label class="option">
-<input type="radio" name="again" value="不確定">
-不確定
-</label>
-
-<label class="option">
-<input type="radio" name="again" value="不願意">
-不願意
-</label>
-
-</div>
-</div>
-
-<div class="question">
-<label class="title-label" for="suggestion">
-10. 您對本次活動有什麼建議或想法嗎？
-</label>
-
-<textarea
-id="suggestion"
-name="suggestion"
-placeholder="歡迎留下您的想法或建議（選填）"
-></textarea>
-</div>
+<label>10. 您對今天的活動有什麼建議或想法？</label>
+<textarea name="suggestion"
+placeholder="歡迎留下您的意見（選填）"></textarea>
 
 </div>
 
-<button type="submit" class="submit-btn">
-✓ 送出問卷
+<button type="submit" id="submitBtn">
+送出問卷
 </button>
 
-<div class="message" id="successMessage">
-🎉 問卷已送出！<br>
-感謝您參與本次活動。
-</div>
+<div id="message" role="status"></div>
 
 </form>
-
-<footer>
-肌力活動問卷調查 ｜ 感謝您的參與 ❤️
-</footer>
-
 </div>
 
 <script>
 
-// Google Apps Script 網址
+// 請將這裡換成自己的 Google Apps Script 網址
 const GOOGLE_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbxuwwLTrvKh65UJtJfCL_x5EqFZvFLP4oqGwxKe0Ss3l9G3rreQfOX-WhsRp7Kqlumf/exec";
+"https://script.google.com/macros/s/AKfycbyddes2WQYqxc5uB6qaOgzHRKH8AlHkA4n5CGDHicEz7hTlI9L7TG9HR7ontVVJftav/exec";
 
-// 取得單選題答案
-function getRadioValue(name) {
-  const selected = document.querySelector(
-    `input[name="${name}"]:checked`
-  );
+const form = document.getElementById("surveyForm");
+const submitBtn = document.getElementById("submitBtn");
+const message = document.getElementById("message");
 
-  return selected ? selected.value : "";
-}
-
-// 送出問卷
-document.getElementById("surveyForm").addEventListener(
-"submit",
-async function(event) {
+form.addEventListener("submit", async function(event) {
 
   event.preventDefault();
 
-  if (!this.reportValidity()) return;
+  if (!form.reportValidity()) {
+    return;
+  }
 
-  const submitButton = this.querySelector(".submit-btn");
+  submitBtn.disabled = true;
+  submitBtn.textContent = "資料傳送中...";
+  message.textContent = "";
 
-  if (submitButton.disabled) return;
+  const formData = new FormData(form);
 
-  const record = {
-    gender: getRadioValue("gender"),
-    age: document.getElementById("age").value,
-    date: document.getElementById("date").value,
-    location: document.getElementById("location").value.trim(),
-    activity: getRadioValue("activity"),
-    understand: getRadioValue("understand"),
-    difficulty: getRadioValue("difficulty"),
-    like: getRadioValue("like"),
-    again: getRadioValue("again"),
-    suggestion: document.getElementById("suggestion").value.trim()
-  };
-
-  submitButton.disabled = true;
-  submitButton.textContent = "資料傳送中...";
+  const data = Object.fromEntries(formData.entries());
 
   try {
 
+    // 使用簡單 POST 避免跨網域預檢請求
+    // no-cors 模式無法讀取伺服器回傳內容
     await fetch(GOOGLE_SCRIPT_URL, {
       method: "POST",
       mode: "no-cors",
       headers: {
-        "Content-Type": "text/plain;charset=utf-8"
+        "Content-Type": "text/plain;charset=UTF-8"
       },
-      body: JSON.stringify(record)
+      body: JSON.stringify(data)
     });
 
-    document.getElementById("successMessage").style.display = "block";
+    message.style.color = "#268b73";
+    message.textContent =
+      "已送出資料！請稍候確認試算表是否收到紀錄。";
 
-    this.reset();
-
-    document.getElementById("successMessage").scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    });
+    form.reset();
 
   } catch (error) {
 
-    alert("傳送失敗，請檢查網路後重新嘗試。");
+    message.style.color = "#d9534f";
+    message.textContent =
+      "傳送時發生問題，請檢查網路或稍後再試。";
 
   } finally {
 
-    submitButton.disabled = false;
-    submitButton.textContent = "✓ 送出問卷";
+    submitBtn.disabled = false;
+    submitBtn.textContent = "送出問卷";
 
   }
 
